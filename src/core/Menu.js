@@ -34,13 +34,13 @@ const Menu = ({ history }) => (
                 </Link>
             </li>
 
-            <li className="nav-item">  
+            <li className="nav-item">
                 <Link
                     className="nav-link"
                     style={isActive(history, "/cart")}
                     to="/cart"
                 >
-                    Cart
+                    Cart{" "}
                     <sup>
                         <small className="cart-badge">{itemTotal()}</small>
                     </sup>
