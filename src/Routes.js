@@ -1,45 +1,45 @@
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
-import Signup from "./user/Signup"
-import Signin from "./user/Signin"
-import Home from "./core/Home"
-import PrivateRoute from "./auth/PrivateRoute"
-import AdminRoute from './auth/AdminRoute'
-import Dashboard from "./user/UserDashboard"
-import AdminDashboard from "./user/AdminDashboard"
-import AddCategory from "./admin/AddCategory"
-import AddProduct from "./admin/AddProduct"
-import Shop from "./core/Shop"
-import Product from "./core/Product"
-import Cart from "./core/Cart"
-import Orders from "./admin/Order"
-import Profile from "./user/Profile"
-import ManageProducts from "./admin/ManageProducts"
-import UpdateProduct from "./admin/UpdateProduct"
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import Signup from './user/Signup';
+import Signin from './user/Signin';
+import Home from './core/Home';
+import PrivateRoute from './auth/PrivateRoute';
+import Dashboard from './user/UserDashboard';
+import AdminRoute from './auth/AdminRoute';
+import AdminDashboard from './user/AdminDashboard';
+import AddCategory from './admin/AddCategory';
+import AddProduct from './admin/AddProduct';
+import Shop from './core/Shop';
+import Product from './core/Product';
+import Cart from './core/Cart';
+import Order from './admin/Order';
+import Profile from './user/Profile';
+import ManageProducts from './admin/ManageProducts';
+import UpdateProduct from './admin/UpdateProduct';
+import UpdateCategory from './admin/updateCategory';
 
-const Routes =()=>{
+const Routes = () => {
     return (
-        
-            <Router>
-              
-                <Switch>
-                    <Route exact path="/" component={Home}/>
-                    <Route exact path="/signin" component={Signin}/>
-                    <Route eact path="/signup" component={Signup}/>
-                    <Route exact path="/shop" component={Shop}/>
-                    <Route exact path="/cart" component={Cart}/>
-                    <AdminRoute path="/create/product" exact component={AddProduct} />
+        <BrowserRouter>
+            <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/shop" exact component={Shop} />
+                <Route path="/signin" exact component={Signin} />
+                <Route path="/signup" exact component={Signup} />
+                <PrivateRoute path="/user/dashboard" exact component={Dashboard} />
+                <AdminRoute path="/admin/dashboard" exact component={AdminDashboard} />
+                <AdminRoute path="/create/category" exact component={AddCategory} />
+                <AdminRoute path="/create/product" exact component={AddProduct} />
                 <Route path="/product/:productId" exact component={Product} />
-                    <PrivateRoute exact path="/user/dashboard" component={Dashboard}/>
-                    <PrivateRoute exact path="/profile/:userId" component={Profile}/>
-                    <AdminRoute exact path="/admin/dashboard" component={AdminDashboard}/>
-                    <AdminRoute exact path="/category/create" component={AddCategory}/>
-                    <AdminRoute exact path="/admin/orders" component={Orders}/>
-                    <AdminRoute exact path="/admin/products" component={ManageProducts}/>
-                    <AdminRoute exact path="/admin/product/update/:productId" component={UpdateProduct}/>
-                </Switch>
-            </Router>
-       
-    )
-}
+                <Route path="/cart" exact component={Cart} />
+                <AdminRoute path="/admin/orders" exact component={Order} />
+                <PrivateRoute path="/profile/:userId" exact component={Profile} />
+                <PrivateRoute path="/admin/products" exact component={ManageProducts} />
+                <AdminRoute path="/admin/product/update/:productId" exact component={UpdateProduct} />
+                <AdminRoute path="/admin/category/update/:categoryId" exact component={UpdateCategory} />
+            </Switch>
+        </BrowserRouter>
+    );
+};
 
 export default Routes;
